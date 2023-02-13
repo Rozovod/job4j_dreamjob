@@ -41,7 +41,7 @@
                 <tr th:each="candidate: ${candidates}">
                     <td th:text="${candidate.id}" />
                     <td th:text="${candidate.name}" />
-                    <td th:text="${candidate.creationDate}"/>
+                    <td th:text="${#temporals.format(candidate.creationDate, 'dd-MM-yyyy HH:mm')}"/>
                 </tr>
                 </tbody>
             </table>
