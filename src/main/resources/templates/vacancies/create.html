@@ -22,6 +22,7 @@
                     <a class="nav-item nav-link" th:href="@{/vacancies}">Вакансии</a>
                     <a class="nav-item nav-link" th:href="@{/candidates}">Кандидаты</a>
                     <a class="nav-item nav-link active" th:href="@{/vacancies/create}">Создать вакансию</a>
+                    <a class="nav-item nav-link active" th:href="@{/candidates/create}">Создать резюме</a>
                 </div>
             </div>
         </div>
@@ -39,6 +40,12 @@
             <div class="form-check mb-3">
                 <input type="checkbox" name="visible" class="form-check-input" id="visible">
                 <label class="form-check-label" for="visible">Опубликовать</label>
+            </div>
+            <div class="mb-3">
+                <label for="city"><b>Город</b></label>
+                <select class="form-control" id="city" name="cityId">
+                    <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"></option>
+                </select>
             </div>
             <div class="mb-3 row">
                 <div class="col-6"></div>
