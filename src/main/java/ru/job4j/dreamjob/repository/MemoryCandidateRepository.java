@@ -17,10 +17,10 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     private MemoryCandidateRepository() {
-        save(new Candidate(0, "Ivan Ivanov", "", 1));
-        save(new Candidate(0, "Stepan Stepanov", "", 2));
-        save(new Candidate(0, "Fedor Fedorov", "", 3));
-        save(new Candidate(0, "Egor Egorov", "", 1));
+        save(new Candidate(0, "Ivan Ivanov", "", 1, 0));
+        save(new Candidate(0, "Stepan Stepanov", "", 2, 0));
+        save(new Candidate(0, "Fedor Fedorov", "", 3, 0));
+        save(new Candidate(0, "Egor Egorov", "", 1, 0));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
         return candidates.computeIfPresent(candidate.getId(),
                 (id, oldCandidate) -> new Candidate(
                         oldCandidate.getId(), candidate.getName(),
-                        candidate.getDescription(), candidate.getCityId())) != null;
+                        candidate.getDescription(), candidate.getCityId(), candidate.getFileId())) != null;
     }
 
     @Override
