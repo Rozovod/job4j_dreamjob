@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class SimpleFileService implements FileService{
+public class SimpleFileService implements FileService {
     private final FileRepository fileRepository;
     private final String storageDirectory;
 
