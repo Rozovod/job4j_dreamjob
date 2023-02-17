@@ -60,7 +60,8 @@ public class Sql2oVacancyRepository implements VacancyRepository {
                     .addParameter("creationDate", vacancy.getCreationDate())
                     .addParameter("visible", vacancy.getVisible())
                     .addParameter("cityId", vacancy.getCityId())
-                    .addParameter("fileId", vacancy.getFileId());
+                    .addParameter("fileId", vacancy.getFileId())
+                    .addParameter("id", vacancy.getId());
             var affectedRows = query.executeUpdate().getResult();
             return affectedRows > 0;
         }

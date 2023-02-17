@@ -48,7 +48,7 @@ public class Sql2oCandidateRepository implements CandidateRepository {
     public boolean update(Candidate candidate) {
         try (var connection = sql2o.open()) {
             var sql = """
-                    UPDATE vacancies
+                    UPDATE candidates
                     SET name = :name, description = :description, creation_date = :creationDate,
                         city_id = :cityId, file_id = :fileId
                     WHERE id = :id
@@ -58,7 +58,8 @@ public class Sql2oCandidateRepository implements CandidateRepository {
                     .addParameter("description", candidate.getDescription())
                     .addParameter("creationDate", candidate.getCreationDate())
                     .addParameter("cityId", candidate.getCityId())
-                    .addParameter("fileId", candidate.getFileId());
+                    .addParameter("fileId", candidate.getFileId())
+                    .addParameter("id", candidate.getId());
             var affectedRows = query.executeUpdate().getResult();
             return affectedRows > 0;
         }
