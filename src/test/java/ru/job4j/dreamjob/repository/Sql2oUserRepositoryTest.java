@@ -3,7 +3,6 @@ package ru.job4j.dreamjob.repository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.sql2o.Sql2oException;
 import ru.job4j.dreamjob.configuration.DatasourceConfiguration;
 import ru.job4j.dreamjob.model.User;
 
@@ -66,9 +65,9 @@ public class Sql2oUserRepositoryTest {
     public void whenSaveDuplicateEmailThenEmpty() {
         var user = sql2oUserRepository.save(new User(
                 0, "email", "name", "password")).get();
-        assertThatThrownBy(() -> sql2oUserRepository.save(new User(
+        assertThat(sql2oUserRepository.save(new User(
                 0, user.getEmail(), "name", "password"
-        ))).isInstanceOf(Sql2oException.class);
+        ))).isEqualTo(empty());
     }
 
     @Test
