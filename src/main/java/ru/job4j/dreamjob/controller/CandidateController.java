@@ -9,7 +9,6 @@ import ru.job4j.dreamjob.dto.FileDto;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.service.CandidateService;
 import ru.job4j.dreamjob.service.CityService;
-import ru.job4j.dreamjob.service.FileService;
 
 @ThreadSafe
 @Controller
@@ -19,7 +18,7 @@ public class CandidateController {
     private final CandidateService candidateService;
     private final CityService cityService;
 
-    public CandidateController(CandidateService candidateService, CityService cityService, FileService fileService) {
+    public CandidateController(CandidateService candidateService, CityService cityService) {
         this.candidateService = candidateService;
         this.cityService = cityService;
     }
